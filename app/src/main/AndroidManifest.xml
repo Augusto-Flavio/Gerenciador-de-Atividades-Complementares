@@ -14,9 +14,12 @@
         android:theme="@style/Theme.GerenciadorDeAtividadesComplementares"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.DocumentsActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name=".Activities.MyActivitiesActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activities.DocumentsActivity"
+            android:exported="false"
+            android:parentActivityName=".Activities.MainActivity" />
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true">
