@@ -10,13 +10,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gerenciadordeatividadescomplementares.R;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button botaoEntrar;
+    private Button botaoCadastrese;
 
-    private void logar(View view){
+    private void logar(){
         boolean campoVazio = false;
 
         EditText emailTextInput = findViewById(R.id.emailTextInput);
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         String email = emailTextInput.getText().toString();
         String senha = senhaTextInput.getText().toString();
         erroTextView.setText("");
+        erroTextView.setVisibility(View.GONE);
 
         if(email.equals("")){
             emailTextInput.setError("Você precisa inserir um endereço de e-mail");
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else{
             erroTextView.setText("Endereço de e-mail ou senha incorretos.");
+            erroTextView.setVisibility(View.VISIBLE);
         }
     }
 
@@ -58,11 +60,20 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         botaoEntrar = findViewById(R.id.botaoEntrar);
+        botaoCadastrese = findViewById(R.id.botaoCadastrese);
 
         botaoEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logar(view);
+                logar();
+            }
+        });
+
+        botaoCadastrese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                startActivity(intent);
             }
         });
 
