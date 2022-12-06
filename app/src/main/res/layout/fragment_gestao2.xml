@@ -3,13 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".Fragments.GestaoFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Gestão" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Atividades de Gestão"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Aqui estarão listadas todas as atividades de gestão cadastradas"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 </FrameLayout>
