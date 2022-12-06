@@ -1,5 +1,8 @@
 package com.example.gerenciadordeatividadescomplementares.Activities;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +29,11 @@ import android.widget.Toast;
 
 import com.example.gerenciadordeatividadescomplementares.Fragments.MapsFragment;
 import com.example.gerenciadordeatividadescomplementares.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -38,6 +47,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private double latitude;
     private double longitude;
+    private FirebaseAuth firebaseAuth;
 
     private void cadastrar(){
         boolean campoVazio = false;
@@ -90,11 +100,31 @@ public class RegistrationActivity extends AppCompatActivity {
             dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(
-                            getApplicationContext(),
-                            "Usuário cadastrado com sucesso.",
-                            Toast.LENGTH_SHORT
-                    ).show();
+                    firebaseAuth.createUserWithEmailAndPassword(email, senha)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "createUserWithEmail:success");
+                                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                                        if (user != null) {
+                                            FirebaseAuth.getInstance().signOut();
+                                        }
+                                        Toast.makeText(
+                                                getApplicationContext(),
+                                                "Usuário cadastrado com sucesso.",
+                                                Toast.LENGTH_SHORT
+                                        ).show();
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                        Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
                 }
             });
             dialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -119,6 +149,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // Ocultando ActionBar
         getSupportActionBar().hide();
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         botaoCadastrar = findViewById(R.id.botaoCadastrar);
         botaoLocalizacao = findViewById(R.id.botaoLocalizacao);
