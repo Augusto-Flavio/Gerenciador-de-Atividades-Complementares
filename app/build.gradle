@@ -70,12 +70,4 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth'
 
-    implementation 'org.thymeleaf:thymeleaf'
-    implementation 'org.thymeleaf:thymeleaf-spring5'
-    implementation 'org.thymeleaf:thymeleaf-spring6'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-    implementation 'org.thymeleaf.testing:thymeleaf-testing'
-    implementation 'org.thymeleaf.testing:thymeleaf-testing-spring5'
-    implementation 'org.thymeleaf.testing:thymeleaf-testing-spring6'
 }
