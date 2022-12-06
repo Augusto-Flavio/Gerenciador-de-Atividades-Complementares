@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "872074641705",
+    "firebase_url": "https://gerenciador-de-ac-default-rtdb.firebaseio.com",
+    "project_id": "gerenciador-de-ac",
+    "storage_bucket": "gerenciador-de-ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872074641705:android:019df5fe7fd303d1823738",
+        "android_client_info": {
+          "package_name": "com.example.gerenciadordeatividadescomplementares"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872074641705-q3ht5r3p7pmqrlh2fq58phs0l2u62kfp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAU_mL-Zcxe89s8r3hkE52ypGsaJnJ9og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872074641705-q3ht5r3p7pmqrlh2fq58phs0l2u62kfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
