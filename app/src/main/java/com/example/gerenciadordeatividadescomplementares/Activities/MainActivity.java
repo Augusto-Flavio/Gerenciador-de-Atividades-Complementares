@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
             campoVazio = true;
         }
 
+        if(senha.length() < 6){
+            senhaTextInput.setError("A senha precisa de no mínimo 6 caracteres");
+            campoVazio = true;
+        }
+
         if(campoVazio){
             return;
         }
@@ -67,8 +72,10 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                             Log.d(TAG, "signInWithEmail:success");
                         } else {
-                            Toast.makeText(getApplicationContext(), "Senha incorreta para esse usuário. Tente \"minhasenha123\".",
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Senha incorreta para esse usuário. Tente \"minhasenha123\".",
+//                                    Toast.LENGTH_SHORT).show();
+                            erroTextView.setText("Endereço de e-mail ou senha incorretos.");
+                            erroTextView.setVisibility(View.VISIBLE);
                             Log.d(TAG, "signInUserWithEmail:failure", task.getException());
                         }
                     }

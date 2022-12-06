@@ -119,7 +119,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         startActivity(intent);
                                     } else {
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                        Toast.makeText(getApplicationContext(), "Ocorreu um erro, tente novamente.",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -231,7 +231,8 @@ public class RegistrationActivity extends AppCompatActivity {
         if (mLocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             String texto = "Latitude.: " + MinhaLocalizacaoListener.latitude + "\n" +
                     "Longitude: " + MinhaLocalizacaoListener.longitude + "\n";
-            Toast.makeText(RegistrationActivity.this, texto, Toast.LENGTH_LONG).show();
+//            Toast.makeText(RegistrationActivity.this, texto, Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistrationActivity.this, "Localizando...", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(RegistrationActivity.this, "GPS DESABILITADO.", Toast.LENGTH_LONG).show();
         }
